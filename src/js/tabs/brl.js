@@ -26,10 +26,16 @@ BrlTab.prototype.angular = function (module)
 	    $scope.loading = false;
     	
 
-      $scope.gbiConnected = store.get('gbi_connected');
+      $scope.brlConnected = store.get('brl_connected');
 
       if (!$id.loginStatus) return $id.goId();
 
+      if (!$scope.account.Balance){
+        store.set('brl_connected', false);
+      }
+
+      $scope.brlConnected = store.get('brl_connected');
+      $scope.showInstructions = store.get('show_instructions');
       
 
 	    $scope.create_trust_line = function () {
@@ -104,12 +110,13 @@ BrlTab.prototype.angular = function (module)
               console.warn('Unhandled engine status encountered!');
           }
           if ($scope.tx_result=="cleared"){
-            $scope.gbiConnected = true;
-            $scope.show_instructions = true;
+            $scope.brlConnected = true;
+            $scope.showInstructions = true;
 
             // Save in local storage
             if (!store.disabled) {
-              store.set('gbi_connected', $scope.gbiConnected);
+              store.set('brl_connected', $scope.brlConnected);
+              store.set('show_instructions', $scope.showInstructions);
             }
 
           }
