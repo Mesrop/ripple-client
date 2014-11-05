@@ -27,11 +27,7 @@ GoldTab.prototype.angular = function (module)
         if (!$scope.account.Balance){
           store.set('gbi_connected', false);
           // console.log("gbiFALSE");
-        }
-        else {
-          store.set('gbi_connected',true);
-          // console.log("gbiTRUE");
-        }       
+        } 
       };
 
       if (!$id.loginStatus) return $id.goId();
