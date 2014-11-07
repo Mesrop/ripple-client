@@ -23,18 +23,19 @@ MxnTab.prototype.angular = function (module)
   module.controller('MxnCtrl', ['$rootScope', 'rpId', 'rpAppManager', 'rpTracker', '$routeParams', 'rpKeychain', 'rpNetwork', '$timeout',
     function ($scope, $id, appManager, rpTracker, $routeParams, keychain, $network, $timeout) {
 
+      $scope.$watch('lines', function () {
+        if($scope.lines['rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfnMXN']){
+          $scope.mxnConnected = true;
+        }
+        else {
+          $scope.mxnConnected = false;
+        }
+      }, true);
+
       if (!$id.loginStatus) return $id.goId();
-
-      $scope.showInstructions = store.get('show_mxn_instructions');
-      $scope.mxnConnected = store.get('mxn_connected');
-
-      if (!$scope.account.Balance){
-        store.set('mxn_connected', false);
-      }
 
       $scope.toggle_instructions = function () {
         $scope.showInstructions = !$scope.showInstructions;
-        store.set('show_mxn_instructions', $scope.showInstructions);
       };
 
       $scope.save_account = function () {
@@ -113,12 +114,6 @@ MxnTab.prototype.angular = function (module)
             $scope.mxnConnected = true;
             $scope.showInstructions = true;
 
-            // Save in local storage
-            if (!store.disabled) {
-              store.set('mxn_connected', $scope.mxnConnected);
-              store.set('show_mxn_instructions', $scope.showInstructions);
-            }
-
           }
           console.log($scope.tx_result);
         }
@@ -150,7 +145,6 @@ MxnTab.prototype.angular = function (module)
         // $timeout(function(){
         //   $scope.mode = 'main';
         // }, 10000);
-
       };
 
     }]);
