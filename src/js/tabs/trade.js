@@ -41,7 +41,7 @@ TradeTab.prototype.angular = function(module)
     var timer;
     $scope.first_currency_selected = "";
     $scope.second_currency_selected = "";
-
+    $scope.load_orderbook = false;
     // Remember user preference on Convert vs. Trade
     $rootScope.ripple_exchange_selection_trade = true;
 
@@ -437,7 +437,8 @@ TradeTab.prototype.angular = function(module)
 
       var changedPair = updateSettings();
       //updateMRU();
-
+      if(changedPair)
+        $scope.load_orderbook = true;
       return changedPair;
     };
 
@@ -1284,6 +1285,7 @@ TradeTab.prototype.angular = function(module)
               var showValue = type === 'bids' ? 'TakerPays' : 'TakerGets';
               order['show' + showValue] = rpamountFilter(order[showValue],OrderbookFilterOpts);
             });
+            $scope.load_orderbook = false;
           }
         });
       }
