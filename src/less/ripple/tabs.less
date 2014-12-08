@@ -2192,6 +2192,22 @@
     color:darken(@midred, 30%);
   }
 
+  .listings.offers {
+    max-height: 1000px;
+    overflow: auto;
+  }
+  .orderlists {
+    opacity: 1;
+    &.loading {
+      opacity: 0;
+    }
+  }
+  .listings.orders {
+    max-height: 9999px;
+    overflow: auto;
+    min-height: 720px;
+  }
+
   .orderbook {
     @media (max-width: @screen-xs-max) {
       font-size: 10px;
