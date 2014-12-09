@@ -442,8 +442,9 @@ TradeTab.prototype.angular = function(module)
 
       var changedPair = updateSettings();
       //updateMRU();
-      if(changedPair)
+      if(changedPair) {
         $scope.load_orderbook = true;
+      }
       return changedPair;
     };
 
@@ -682,8 +683,8 @@ TradeTab.prototype.angular = function(module)
 
       Options.orderbook_max_rows += multiplier;
 
+      $scope.load_orderbook = true;
       loadOffers();
-
       $scope.orderbookState = (($scope.orderbookLength - Options.orderbook_max_rows + multiplier) < 1) ? 'full' : 'ready';
     };
 
@@ -1101,7 +1102,9 @@ TradeTab.prototype.angular = function(module)
       // Load orderbook
       if (order.prev_settings !== key) {
         changedPair = true;
-        loadOffers();
+        $timeout(function(){
+          loadOffers();
+        },500);
 
         order.prev_settings = key;
       }
