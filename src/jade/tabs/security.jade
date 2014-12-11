@@ -115,9 +115,11 @@ section.col-xs-12.content(ng-controller="SecurityCtrl")
           .section
             .descriptor(l10n) Ripple password
             .row
-              .col-xs-9.col-sm-8.col-md-6(ng-hide="openFormPassword") *****************
+              .col-xs-9.col-sm-8.col-md-6(ng-hide="openFormPassword")
+                div.description
+                  | *****************
               .col-xs-3.col-sm-4.col-md-6
-                a(href="", ng-click="openFormPassword=!openFormPassword"
+                a.btn.btn-cancel(href="", ng-click="openFormPassword=!openFormPassword"
                 ng-hide="openFormPassword", l10n) edit
             .row
               
@@ -185,8 +187,7 @@ section.col-xs-12.content(ng-controller="SecurityCtrl")
                           div(ng-show="requirePassword", l10n) Yes
                           div(ng-hide="requirePassword", l10n) No
                       .col-xs-3.col-sm-4.col-md-6
-                        div.description
-                          a#edit(href="", ng-click="editUnlock = true", l10n) edit
+                        a#edit.btn.btn-cancel(href="", ng-click="editUnlock = true", l10n) edit
                     .row.edit-security-pswd(ng-show="editUnlock")
                       .col-xs-6.col-sm-5.col-md-4
                         .description Require password
