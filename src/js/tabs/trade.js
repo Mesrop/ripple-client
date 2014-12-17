@@ -650,7 +650,7 @@ TradeTab.prototype.angular = function(module)
       Options.orderbook_max_rows += multiplier;
       $timeout(function(){
         loadOffers();
-      },500);
+      },1000);
       $scope.orderbookState = (($scope.orderbookLength - Options.orderbook_max_rows + multiplier) < 1) ? 'full' : 'ready';
     };
 
