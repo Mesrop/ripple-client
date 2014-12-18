@@ -586,6 +586,12 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                 span(ng-show="lastUpdate > '1'", l10n-inc)  seconds
                 span(ng-show="lastUpdate == '1'", l10n-inc)  second
                 |  ago
+        div.orderbook-wrapper(ng-hide="hideOrderBook")
+          group.disconnected(ng-hide="!load_orderbook")
+            div(id="orderbook_loader")
+              img(src="img/sections.png", class="loader")
+              div(class="loading_sections", l10n) Loading Order Book
+          .orderlists(ng-class="load_orderbook ? 'loading' : ' '")
             .listings.orders
               //- TODO hide one column (size/sum) to show bids/ask in the same line for mobile phones.
               //- TODO highlight changes
