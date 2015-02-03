@@ -233,6 +233,17 @@ header.loggedOut {
 		cursor: pointer;
 		margin-top: 10px;
 		color: #fff;
+		white-space: nowrap;
+		img {
+			margin-left: -5px;
+		}
+		@media (max-width: @screen-xs-max) {
+			margin-top: 0;
+			margin-left: 0;
+			img {
+				margin-left: 0;
+			}
+		}
 	}
 	
 	.loading_text:hover {

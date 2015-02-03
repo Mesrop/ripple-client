@@ -1,11 +1,11 @@
 
 section.col-xs-12.content(ng-controller="RegisterCtrl")
   .row.auth-form-container(ng-show='mode=="form"')
-    .col-xs-12.col-sm-6.col-md-8.hidden-xs
+    .col-xs-12.col-sm-6.col-md-7.col-lg-8.hidden-xs
       .welcomeText(l10n) Welcome to Ripple Trade
       hr
       p.heroText(l10n) Trade hundreds of assets, from XRP to crypto to gold to fiat.
-    .auth-form-wrapper.col-xs-12.col-sm-6.col-md-4
+    .auth-form-wrapper.col-xs-12.col-sm-6.col-md-5.col-lg-4
       .tabAdjust(ng-hide="oldUserBlob")
         .signUpWrapper
           h2.signUpTop(ng-hide="oldUserBlob", l10n) Sign Up
@@ -158,11 +158,11 @@ section.col-xs-12.content(ng-controller="RegisterCtrl")
         button.btn.btn-primary(ng-click='mode="form"', l10n) Back
 
   .row.auth-form-container(ng-show='mode=="secret"')
-    .col-xs-12.col-sm-6.col-md-8.hidden-xs
+    .col-xs-12.col-sm-6.col-md-7.col-lg-8.hidden-xs
       .welcomeText(l10n) Welcome to Ripple Trade
       hr
       p.heroText(l10n) Trade hundreds of assets, from XRP to crypto to gold to fiat.
-    .auth-form-wrapper.col-sm-offset-2.col-sm-6.col-md-offset-3.col-md-4
+    .auth-form-wrapper.col-sm-offset-2.col-sm-6.col-md-offset-3.col-md-5.col-lg-4
       h2(ng-hide="oldUserBlob", l10n) Sign Up
       h2(ng-show="oldUserBlob", l10n) Migrate
       .sign-up-steps-list
@@ -206,11 +206,11 @@ section.col-xs-12.content(ng-controller="RegisterCtrl")
           span(l10n) Continue to email verification
 
   .row.auth-form-container.mode-verification(ng-show='mode=="verification"')
-    .col-xs-12.col-sm-6.col-md-8.hidden-xs
+    .col-xs-12.col-sm-6.col-md-7.col-lg-8.hidden-xs
       .welcomeText(l10n) Welcome to Ripple Trade
       hr
       p.heroText(l10n) Trade hundreds of assets, from XRP to crypto to gold to fiat.
-    .auth-form-wrapper.col-sm-6.col-md-4
+    .auth-form-wrapper.col-xs-12.col-sm-6.col-md-5.col-lg-4
       h2(ng-hide="oldUserBlob", l10n) Sign Up
       h2(ng-show="oldUserBlob", l10n) Migrate
       .sign-up-steps-list
@@ -224,10 +224,10 @@ section.col-xs-12.content(ng-controller="RegisterCtrl")
         span  {{userBlob.data.email}}
         | . To complete registration, click the link in the email.
       .auth-attention(ng-show="resendSuccess", l10n) Email token has been resent.
-      form(name="resendForm").row
+      form(name="resendForm").row.row-padding-small
         .col-xs-12
           label(l10n) Email Address:
-        .col-xs-9.col-sm-8
+        .col-xs-12.col-sm-8
           .change-email-bar
             input.form-control(type="email", ng-model="newEmail", placeholder="{{userBlob.data.email}}")
         .col-xs-3.col-sm-4

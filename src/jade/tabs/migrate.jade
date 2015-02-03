@@ -1,11 +1,11 @@
 section.col-xs-12.content(ng-controller="MigrateCtrl")
   .row.auth-form-container
-    .col-xs-12.col-sm-4.col-md-8.hidden-xs
+    .col-xs-12.col-sm-4.col-md-7.col-lg-8.hidden-xs
       .welcomeText(l10n) Welcome to Ripple Trade
       hr
       p.heroText(l10n) Trade hundreds of assets, from XRP to crypto to gold to fiat.
       
-    .auth-form-wrapper.col-sm-8.col-md-4.col-xs-12
+    .auth-form-wrapper.col-lg-4.col-sm-8.col-md-5.col-xs-12
       form(name='loginForm', ng-submit='submitForm()')
         h2(l10n) Migrate
         .auth-attention(l10n) To begin migration, enter the name and passphrase
