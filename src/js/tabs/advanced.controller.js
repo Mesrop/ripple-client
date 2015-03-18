@@ -43,12 +43,9 @@ AdvancedTab.prototype.angular = function(module)
       trade: false
     };
     $scope.edit = {
-      advanced_feature_switch: false,
       blobvault: false,
-      bridge: false,
       maxNetworkFee: false,
-      historyApi: false,
-      defaultRippleFlag: false
+      historyApi: false
     };
     $scope.max_tx_network_fee_human = ripple.Amount.from_json($scope.options.max_tx_network_fee).to_human();
     $scope.advancedFeatureSwitchChanged = false;
@@ -70,31 +67,6 @@ AdvancedTab.prototype.angular = function(module)
           // recreated unless we do location.reload()
           network.remote.max_fee = $scope.options.max_tx_network_fee;
           break;
-        case 'advanced_feature_switch':
-          // Ignore it if we are not going to change anything
-          if (!$scope.advancedFeatureSwitchChanged) {
-            $scope.edit[type] = false;
-            return;
-          }
-          $scope.advancedFeatureSwitchChanged = false;
-          $scope.userBlob.set('/clients/rippletradecom/trust/advancedMode', $scope.options.advanced_feature_switch);
-          break;
-        case 'defaultRippleFlag':
-          // Need to set flag on account_root
-          var tx = network.remote.transaction();
-          tx.accountSet(id.account);
-          tx.setFlags('DefaultRipple');
-
-          keychain.requestSecret(id.account, id.username, function (err, secret) {
-            if (err) {
-              console.log('Error: ', err);
-              return;
-            }
-            tx.secret(secret);
-            tx.submit();
-          });
-          break;
-
         case 'historyApi':
           $scope.userBlob.set('/clients/rippletradecom/historyApi', $scope.options.historyApi.replace(/[\/]*$/, ''));
           break;
@@ -136,8 +108,6 @@ AdvancedTab.prototype.angular = function(module)
         case 'blobvault':
           $scope.options.blobvault = '';
           break;
-        case 'bridge':
-          $scope.options.bridge.out.bitcoin = '';
       }
 
       // Save in local storage
@@ -151,8 +121,6 @@ AdvancedTab.prototype.angular = function(module)
       if (type === 'maxNetworkFee') {
         $scope.options.max_tx_network_fee = $scope.optionsBackup.max_tx_network_fee;
         $scope.max_tx_network_fee_human = ripple.Amount.from_json($scope.options.max_tx_network_fee).to_human();
-      } else if (type === 'bridge') {
-        $scope.options.bridge.out.bitcoin = $scope.optionsBackup.bridge.out.bitcoin;
       } else {
         $scope.options[type] = $scope.optionsBackup[type];
       }
