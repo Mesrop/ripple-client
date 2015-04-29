@@ -159,6 +159,7 @@ header.loggedOut {
 		color: @white;
 		width: 100%;
 		margin: 0;
+		line-height: 77px;
 	}
 
 	#t-register .auth-form-container .auth-form-wrapper label, #t-login .auth-form-container .auth-form-wrapper label, #t-recover .auth-form-container .auth-form-wrapper label, #t-account .auth-form-container .auth-form-wrapper label, #t-migrate .auth-form-container .auth-form-wrapper label, #t-register .auth-form-container .see-privacy-text, #t-login .auth-form-container .see-privacy-text, #t-recover .auth-form-container .see-privacy-text, #t-account .auth-form-container .see-privacy-text, #t-migrate .auth-form-container .see-privacy-text {
@@ -272,13 +273,13 @@ header.loggedOut {
 	.signUpWrapper {
 		text-align: center;
 		width: 50%;
-		display: inline-block;
+		float: left;
 	}
 
 	.loginWrapper {
 		text-align: center;
 		width: 50%;
-		display: inline-block;
+		float: left;
 	}
 
 	.tabAdjust {
@@ -287,6 +288,7 @@ header.loggedOut {
 		margin-top: -15px;
 		margin-left: -20px;
 		margin-right: -20px;
+		.clearfix();
 	}
 
 	.bottomText {
@@ -386,7 +388,6 @@ header.loggedOut {
 		color: @midgray !important;
 		display: block;
 		background: rgba(0,0,0,0.2);
-		padding: 15px;
 		&:hover {
 			color: @white !important;
 		}
@@ -411,7 +412,6 @@ header.loggedOut {
 		color: @midgray !important;
 		display: block;
 		background: rgba(0,0,0,0.2);
-		padding: 15px;
 		&:hover {
 			color: @white !important;
 		}
